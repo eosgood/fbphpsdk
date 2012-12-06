@@ -4,7 +4,7 @@
 // Defined in 'AppInfo.php'
 require_once('AppInfo.php');
 
-require_once('./sdk/facebook.php');
+require_once('./facebook-php-sdk/src/facebook.php');
 
 $facebook = new Facebook(array(
   'appId'  => AppInfo::appID(),
