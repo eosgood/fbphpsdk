@@ -24,7 +24,7 @@ if ($user) {
   }
 }
 
-$eosgood = $facebook->api('/eosgood');
+$eosgood = $facebook->api('/ericjosgood');
 
 ?>
 <!DOCTYPE html>
