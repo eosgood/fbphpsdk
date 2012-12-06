@@ -29,7 +29,25 @@ $eosgood = $facebook->api('/ericjosgood');
 ?>
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
-  <body>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+        $("body").prepend('<a href="#" onclick="doFBError();">Click me 2x to make errors</a>');
+});
+
+function doFBError()
+{
+        $.ajax("index.php").done(function(response){
+                $("body").prepend(response);
+        });
+}
+
+</script>
+</head>
+
+
+<body>
     <div id="fb-root"></div>
     <script>
       window.fbAsyncInit = function() {
