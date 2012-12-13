@@ -46,6 +46,7 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     </style>
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
+    <meta property="fb:admins" content="6420900" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="PHP SDK Sandbox" />
     <meta property="og:description" content="Test the Facebook PHP SDK" /> 
@@ -92,7 +93,7 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
     <div class="container">
       <div class="page-header">
-        <h1>Welcome to the PHP SDK Sandbox <small>this is a site for testing the php sdk</small></h1>
+        <h1>Welcome to the PHP SDK Sandbox</h1>
       </div>
 
       <div class="bs-docs-social">
