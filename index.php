@@ -35,7 +35,15 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
   <head>
     <title>PHP SDK Sandbox</title>
 
+    <!-- Le styles -->
+     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <meta property="og:type" content="website" />
@@ -71,72 +79,110 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
         document.getElementById('fb-root').appendChild(e);
       }());
     </script>
-
-    <div class="container-fluid">
-      <div class="navbar">
-        <div class="navbar-inner">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
           <a class="brand" href="#">PHP SDK Sandbox</a>
           <p class="navbar-text pull-right">
              Logged in as <?php echo $user_name?>
           </p>
         </div>
       </div>
-       <div class="hero-unit">
-          <h1>Welcome to the PHP SDK Sandbox</h1>
-          <p>This is a site for testing the php sdk</p>
+    </div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Welcome to the PHP SDK Sandbox <small>this is a site for testing the php sdk</small></h1>
       </div>
-      <div class="row-fluid">
-        <div class="span2">
-          <h2>Login</h2>
-          <p><fb:login-button autologoutlink="true"></fb:login-button></p>
-          <p><a href="<?php echo $login_url; ?>">Login with PHP</a></p>
-          <p><fb:like layout="box_count"></fb:like></p>
+
+      <div class="bs-docs-social">
+        <ul class="bs-docs-social-buttons">
+          <li>
+            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=eosgood&repo=fbphpsdk&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+          </li>
+          <li>
+            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=eosgood&repo=fbphpsdk&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="150px" height="20px"></iframe>
+          </li>
+          <li>
+            <fb:like layout="button_count" href="https://fbphpsdk.herokuapp.com/"></fb:like>
+          </li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="span6">
+          <h4>Login using the <a href="https://developers.facebook.com/docs/reference/php/">PHP SDK</a></h4>
+          <p>Uses the PHP SDK to login with <a href="https://developers.facebook.com/docs/reference/php/facebook-getLoginUrl/"><code>$facebook->getLoginUrl()</code></a></p>
+          <p><a class="btn btn-success" href="<?php echo $login_url; ?>">Login with PHP &raquo;</a></p>
         </div>
+        <div class="span6">
+          <h4>Login using the <a href="https://developers.facebook.com/docs/reference/javascript/">JS SDK</a></h4>
+          <p>Uses the Javascript SDK to login with <a href="https://developers.facebook.com/docs/reference/javascript/FB.login/"><code>FB.login()</code></a></p>
+          <p><a class="btn btn-success" id="login-js">Login with JS &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
         <div class="span3">
-            <h2>Signed Request</h2>
-            <table class="table table-bordered table-striped">
-              <tr>
+          <h4>Signed Request</h4>
+          <table class="table table-bordered table-striped">
+            <tr>
+              <td>
+                 <span
+                  rel="popover"
+                  data-title="algorithm"
+                  data-content="A JSON string containing the mechanism used to sign the request"
+                  data-trigger="hover">
+                  Encryption
+                </span>
+               </td>
+               <td><?php echo $signed_request['algorithm']; ?></td>
+            </tr>
+            <tr>
                 <td>
-	                 <span
-	                	rel="popover"
-	                	data-title="algorithm"
-	                	data-content="A JSON string containing the mechanism used to sign the request"
-	                	data-trigger="hover">
-	                	Encryption
-	                </span>
-	               </td>
-	               <td><?php echo $signed_request['algorithm']; ?></td>
-	            </tr>
-              <tr>
-                  <td>
-                    <span 
-                      rel="popover" 
-                      data-title="issued_at"
-                      data-content="A JSON number containing the Unix timestamp when the request was signed" 
-                      data-trigger="hover">
-                      Issue Time
-                    </span>
-                  </td>
-                  <td><?php echo $signed_request['issued_at'];?></td>
-              </tr>
-              <tr>
-                  <td>
-                    <span 
-                      rel="popover" 
-                      data-title="user_id"
-                      data-content="A JSON number containing the user's id"
-                      data-trigger="hover">
-                      User ID
-                    </span>
-                  </td>
-                  <td><?php echo $signed_request['user_id']; ?></td>
-              </tr>
-            </table>
+                  <span 
+                    rel="popover" 
+                    data-title="issued_at"
+                    data-content="A JSON number containing the Unix timestamp when the request was signed" 
+                    data-trigger="hover">
+                    Issue Time
+                  </span>
+                </td>
+                <td><?php echo $signed_request['issued_at'];?></td>
+            </tr>
+            <tr>
+                <td>
+                  <span 
+                    rel="popover" 
+                    data-title="user_id"
+                    data-content="A JSON number containing the user's id"
+                    data-trigger="hover">
+                    User ID
+                  </span>
+                </td>
+                <td><?php echo $signed_request['user_id']; ?></td>
+            </tr>
+          </table>
         </div>
-        <div class="span3">
-          <p>
-            <button id="getButton" class="btn btn-large btn-primary" type="button">GET /me</button>
-          </p>
+        <div class="span8">
+          <h4> Raw signed_request </h4>
+          <pre>
+            <?php print_r($signed_request); ?>
+          </pre>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="span6">
+          <h4>GET Request to '/me'</h4>
+          <p>Send a GET request to https://graph.facebook.com/me using the php sdk via ajax request</p>
+          <p><button id="getButton" class="btn btn-primary" type="button">GET /me</button></p>
           <table class="table table-bordered table-striped">
              <tr>
               <td>
@@ -158,46 +204,28 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
             </tr>
           </table>
         </div>
-        <div class="span3">
+         <div class="span6">
+          <h4>POST Request to '/me'/feed'</h4>
+          <p>Send a post request to 'https://graph.facebook.com/me' with the php sdk via ajax call. Requires <code>'publish_stream'</code> permissions.</p>
           <p>
-            <button id="postButton" class="btn btn-large btn-primary" type="button">POST /me</button>
+            <a class="btn btn-warning" href="<?php echo $login_perms_url; ?>">Request perms with PHP &raquo;</a>           
+            <a class="btn btn-warning" id="perms-js">Request perms with JS &raquo;</a>
           </p>
-          <h4>Request Permission</h4>
-          <p>
-            <fb:login-button scope="publish_stream"></fb:login-button>
-            <p><a href="<?php echo $login_perms_url; ?>">Perms with PHP</a></p>
-          <p>
+          <p><button id="postButton" class="btn btn-primary" type="button">POST /me</button></p>
           <div id="post-id"></div>
           <div id="post-error"></div>
         </div>
       </div>
-      <div class="row-fluid">
-        <div class="span5">
-          <h2> Raw signed_request </h2>
-          <pre>
-            <?php print_r($signed_request); ?>
-          </pre>
-        </div>
-        <div class="span5">
-          <h2> Raw /me request</h2>
-          <pre id="user-raw">No Data Requested</pre>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span6">
-          <ul class="nav nav-pills">
-            <li><a href="https://github.com/eosgood/fbphpsdk" target="_blank">Github</a></li>
-            <li><a href="https://github.com/eosgood/fbphpsdk" target="_blank">Report Bugs</a></li>
-          </ul>
-        </div>
-        <div class="span6">
-          <p class="muted pull-right">Copyright &copy; 2012 Eric Osgood</p>
-        </div>
-      </div>
-  </div>
+
+      <footer class="footer">
+        <p class="muted pull-right">Copyright &copy; 2012 Eric Osgood</p>
+      </footer>
+
     </div>
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-     <script src="js/async.js"></script>
+    <script src="js/async.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
