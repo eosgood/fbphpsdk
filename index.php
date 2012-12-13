@@ -99,10 +99,10 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
       <div class="bs-docs-social">
         <ul class="bs-docs-social-buttons">
           <li>
-            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=eosgood&repo=fbphpsdk&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            <iframe class="github-btn" src="https://fbphpsdk.herokuapp.com/github-btn.html?user=eosgood&repo=fbphpsdk&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
           </li>
           <li>
-            <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=eosgood&repo=fbphpsdk&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="150px" height="20px"></iframe>
+            <iframe class="github-btn" src="https://fbphpsdk.herokuapp.com/github-btn.html?user=eosgood&repo=fbphpsdk&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="150px" height="20px"></iframe>
           </li>
           <li>
             <fb:like layout="button_count" href="https://fbphpsdk.herokuapp.com/"></fb:like>
