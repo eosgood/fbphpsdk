@@ -189,21 +189,22 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
               <td>
                 <span>User ID</span>
               </td>
-              <td id="user-id">Not Loaded</td>
+              <td class="user-data" id="user-id">Not Loaded</td>
             </tr>
             <tr>
               <td>
                 <span>User Name</span>
               </td>
-              <td id="user-name">Not Loaded</td>
+              <td class="user-data" id="user-name">Not Loaded</td>
             </tr>
             <tr>
               <td>
                 <span>User Gender</span>
               </td>
-              <td id="user-gender">Not Loaded</td>
+              <td class="user-data" id="user-gender">Not Loaded</td>
             </tr>
           </table>
+          <div id="user-error"></div>
         </div>
          <div class="span6">
           <h4>POST Request to '/me'/feed'</h4>
@@ -213,8 +214,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
             <a class="btn btn-warning" id="perms-js">Request perms with JS &raquo;</a>
           </p>
           <p><button id="postButton" class="btn btn-primary" type="button">POST /me</button></p>
-          <div id="post-id"></div>
-          <div id="post-error"></div>
+          <div class="post-data" id="post-id"></div>
+          <div class="post-data" id="post-error"></div>
         </div>
       </div>
 

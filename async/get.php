@@ -21,7 +21,7 @@ if (isset($_POST['graph'])) {
       // Proceed knowing you have a logged in user who's authenticated.
       $data = $facebook->api('/me');
     } catch (FacebookApiException $e) {
-      $data = array('error' => $e);
+      $data = array('error' => $e->getMessage());
     }
   }
 
