@@ -164,6 +164,18 @@ $signed_request = $facebook->getSignedRequest();
           <pre id="user-raw">No Data Requested</pre>
         </div>
       </div>
+      <div class="row-fluid">
+        <div class="span6">
+          <ul class="nav nav-pills">
+            <li><a href="https://github.com/eosgood/fbphpsdk" target="_blank">Github</a></li>
+            <li><a href="https://github.com/eosgood/fbphpsdk" target="_blank">Report Bugs</a></li>
+          </ul>
+        </div>
+        <div class="span6">
+          <p class="muted pull-right">Copyright &copy; 2012 Eric Osgood</p>
+        </div>
+      </div>
+  </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
