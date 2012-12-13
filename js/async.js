@@ -16,7 +16,13 @@ $('#getButton').click(function(){
 });
 
 $('#postButton').click(function(){
+	$('#post-error').removeClass();
+	$('#post-error').html('');
+	$('#post-id').removeClass();
+	$('#post-id').html('');
+
 	var success = function(response, textStatus, jqXHR) {
+
 		var response_obj = jQuery.parseJSON(response);
 		if(response_obj.error) {
 			console.log('error');
@@ -38,5 +44,6 @@ $('#postButton').click(function(){
 		data: {graph: 1},
 		success: success
 	});
+
 });
 
