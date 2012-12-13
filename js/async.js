@@ -1,4 +1,4 @@
-$('#asyncButton').click(function(){
+$('#getButton').click(function(){
 	var success = function(response, textStatus, jqXHR) {
 		var response_obj = jQuery.parseJSON(response);
 		$('#user-raw').html(response);
@@ -8,9 +8,35 @@ $('#asyncButton').click(function(){
 	};
 
 	$.ajax({
-		url: '/async/graph.php',
+		url: '/async/get.php',
 		type: 'post',
 		data: {graph: 1},
 		success: success
 	});
 });
+
+$('#postButton').click(function(){
+	var success = function(response, textStatus, jqXHR) {
+		var response_obj = jQuery.parseJSON(response);
+		if(response_obj.error) {
+			console.log('error');
+			$('#post-error').addClass('alert');
+			$('#post-error').addClass('alert-error');
+			$('#post-error').html(response_obj.error);	
+		}
+
+		if(response_obj.id) {
+			$('#post-id').addClass('alert');
+			$('#post-id').addClass('alert-success');
+			$('#post-id').html('Post created: ' + response_obj.id);
+		}
+	};
+
+	$.ajax({
+		url: '/async/post.php',
+		type: 'post',
+		data: {graph: 1},
+		success: success
+	});
+});
+

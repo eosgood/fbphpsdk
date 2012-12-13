@@ -25,6 +25,8 @@ if ($user) {
 
 $signed_request = $facebook->getSignedRequest();
 
+$login_url = $facebook->getLoginUrl();
+$login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
 ?>
 
@@ -87,6 +89,7 @@ $signed_request = $facebook->getSignedRequest();
         <div class="span2">
           <h2>Login</h2>
           <p><fb:login-button autologoutlink="true"></fb:login-button></p>
+          <p><a href="<?php echo $login_url; ?>">Login with PHP</a></p>
           <p><fb:like layout="box_count"></fb:like></p>
         </div>
         <div class="span3">
@@ -132,7 +135,7 @@ $signed_request = $facebook->getSignedRequest();
         </div>
         <div class="span3">
           <p>
-            <button id="asyncButton" class="btn btn-large btn-primary" type="button">Async /me Request</button>
+            <button id="getButton" class="btn btn-large btn-primary" type="button">GET /me</button>
           </p>
           <table class="table table-bordered table-striped">
              <tr>
@@ -154,6 +157,18 @@ $signed_request = $facebook->getSignedRequest();
               <td id="user-gender">Not Loaded</td>
             </tr>
           </table>
+        </div>
+        <div class="span3">
+          <p>
+            <button id="postButton" class="btn btn-large btn-primary" type="button">POST /me</button>
+          </p>
+          <h4>Request Permission</h4>
+          <p>
+            <fb:login-button scope="publish_stream"></fb:login-button>
+            <p><a href="<?php echo $login_perms_url; ?>">Perms with PHP</a></p>
+          <p>
+          <div id="post-id"></div>
+          <div id="post-error"></div>
         </div>
       </div>
       <div class="row-fluid">
