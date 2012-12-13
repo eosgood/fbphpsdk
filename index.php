@@ -31,6 +31,8 @@ $signed_request = $facebook->getSignedRequest();
 <!DOCTYPE html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
+    <title>PHP SDK Sandbox</title>
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
