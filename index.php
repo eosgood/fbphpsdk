@@ -35,6 +35,8 @@ $signed_request = $facebook->getSignedRequest();
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <meta property="og:type" content="website" />
+    <meta property="og:title" content="PHP SDK Sandbox" />
+    <meta property="og:description" content="Test the Facebook PHP SDK" /> 
     <meta property="og:image" content="http://www.troll.me/images/the-most-interesting-man-in-the-world/i-dont-always-test-my-code-but-when-i-do-i-prefer-to-test-in-production.jpg" />
     <meta property="og:url" content="https://fbphpsdk.herokuapp.com/" />
     <meta property="og:site_name" content="PHP SDK Sandbox" />
@@ -69,14 +71,14 @@ $signed_request = $facebook->getSignedRequest();
     <div class="container-fluid">
       <div class="navbar">
         <div class="navbar-inner">
-          <a class="brand" href="#">PHP SDK Tester</a>
+          <a class="brand" href="#">PHP SDK Sandbox</a>
           <p class="navbar-text pull-right">
              Logged in as <?php echo $user_name?>
           </p>
         </div>
       </div>
        <div class="hero-unit">
-          <h1>Welcome to the PHP SDK Tester</h1>
+          <h1>Welcome to the PHP SDK Sandbox</h1>
           <p>This is a site for testing the php sdk</p>
       </div>
       <div class="row-fluid">
