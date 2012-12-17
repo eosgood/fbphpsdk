@@ -36,7 +36,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     <title>PHP SDK Sandbox</title>
 
     <!-- Le styles -->
-     <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/prettify.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -55,28 +56,13 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     <meta property="og:site_name" content="PHP SDK Sandbox" />
     <meta property="fb:app_id"  content="<?php echo AppInfo::appID() ?>" />
 
-  <body>
+  <body onload="prettyPrint()" >
     <div id="fb-root"></div>
     <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId: '<?php echo AppInfo::appID() ?>',
-          cookie: true,
-          xfbml: true,
-          status: true
-        });
-
-        FB.Event.subscribe('auth.login', function(response) {
-          window.location.reload();
-        });
-        FB.Event.subscribe('auth.logout', function(response) {
-          window.location.reload();
-        });
-      };
       (function() {
-        var e = document.createElement('script'); e.async = true;
-        e.src = document.location.protocol +
-          '//connect.facebook.net/en_US/all.js';
+        var e = document.createElement('script');
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        e.async = true;
         document.getElementById('fb-root').appendChild(e);
       }());
     </script>
@@ -128,6 +114,42 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
       <hr />
 
       <div class="row">
+        <div class="span2">
+          <h4>Auth Response</h4>
+          <div class="response" id="response-status"></div>
+        </div>
+        <div class="span2 pull-right">
+          <button id="fb-status" class="btn btn-primary" type="button">Get Login Status</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <table class="table table-bordered table-striped">
+            <tr>
+              <td><span>User ID</span></td>
+               <td class="response" id="response-uid">No User ID</td>
+            </tr>
+            <tr>
+              <td><span>Expires In</span></td>
+               <td class="response" id="response-expires">No Expire Time</td>
+            </tr>
+            <tr>
+              <td><span>Access Token</span></td>
+               <td class="response" id="response-token">No Access Token</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          <h4> Raw response </h4>
+          <pre id="response-raw" class="prettyprint lang-js">No Auth Response Yet</pre>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
         <div class="span3">
           <h4>Signed Request</h4>
           <table class="table table-bordered table-striped">
@@ -171,9 +193,7 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
         </div>
         <div class="span8">
           <h4> Raw signed_request </h4>
-          <pre>
-            <?php print_r($signed_request); ?>
-          </pre>
+          <pre class="prettyprint lang-php"><?php print_r($signed_request); ?></pre>
         </div>
       </div>
 
@@ -229,5 +249,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     <script src="js/bootstrap.min.js"></script>
     <script src="js/async.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/prettify.js"></script>
+    <script src="js/status.js"></script>
+    <script src="js/fb-init.js"></script>
   </body>
 </html>
