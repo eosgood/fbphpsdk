@@ -98,7 +98,7 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
       <hr />
 
-      <div class="row">
+      <div class="row" id="login">
         <div class="span6">
           <h4>Login using the <a href="https://developers.facebook.com/docs/reference/php/">PHP SDK</a></h4>
           <p>Uses the PHP SDK to login with <a href="https://developers.facebook.com/docs/reference/php/facebook-getLoginUrl/"><code>$facebook->getLoginUrl()</code></a></p>
@@ -113,12 +113,12 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
       <hr />
 
-      <div class="row">
-        <div class="span2">
+      <div class="row" id="authresponse">
+        <div class="span3">
           <h4>Auth Response</h4>
           <div class="response" id="response-status"></div>
         </div>
-        <div class="span2 pull-right">
+        <div class="span3 pull-right">
           <button id="fb-status" class="btn btn-primary" type="button">Get Login Status</button>
         </div>
       </div>
@@ -149,7 +149,7 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
       <hr />
 
-      <div class="row">
+      <div class="row" id="signedrequest">
         <div class="span3">
           <h4>Signed Request</h4>
           <table class="table table-bordered table-striped">
@@ -199,8 +199,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
       <hr />
 
-      <div class="row">
-        <div class="span6">
+      <div class="row" id="requests">
+        <div class="span4">
           <h4>GET Request to '/me'</h4>
           <p>Send a GET request to https://graph.facebook.com/me using the php sdk via ajax request</p>
           <p><button id="getButton" class="btn btn-primary" type="button">GET /me</button></p>
@@ -226,19 +226,29 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
           </table>
           <div id="user-error"></div>
         </div>
-         <div class="span6">
+        <div class="span4">
           <h4>POST Request to '/me'/feed'</h4>
-          <p>Send a post request to 'https://graph.facebook.com/me' with the php sdk via ajax call. Requires <code>'publish_stream'</code> permissions.</p>
+          <p>Send a post request to 'https://graph.facebook.com/me/feed' with the php sdk via ajax call. Requires <code>'publish_stream'</code> permissions.</p>
           <p>
             <a class="btn btn-warning" href="<?php echo $login_perms_url; ?>">Request perms with PHP &raquo;</a>           
             <a class="btn btn-warning" id="perms-js">Request perms with JS &raquo;</a>
           </p>
-          <p><button id="postButton" class="btn btn-primary" type="button">POST /me</button></p>
+          <p><button id="postButton" class="btn btn-primary" type="button">POST /me/feed</button></p>
           <div class="post-data" id="post-id"></div>
           <div class="post-data" id="post-error"></div>
         </div>
+        <div class="span4">
+          <h4>POST Photo to '/me'/photos'</h4>
+          <p>Send a post request to 'https://graph.facebook.com/me/photos' with the php sdk via ajax call. Requires <code>'photo_upload'</code> permissions.</p>
+          <p>
+            <a class="btn btn-warning" href="<?php echo $login_perms_url; ?>">Request perms with PHP &raquo;</a>           
+            <a class="btn btn-warning" id="perms-js">Request perms with JS &raquo;</a>
+          </p>
+          <p><button id="photoButton" class="btn btn-primary" type="button">POST photo to /me</button></p>
+          <div class="photo-data" id="photo-id"></div>
+          <div class="photo-data" id="photo-error"></div>
+        </div>
       </div>
-
       <footer class="footer">
         <p class="muted pull-right">Copyright &copy; 2012 Eric Osgood</p>
       </footer>
@@ -252,5 +262,6 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     <script src="js/prettify.js"></script>
     <script src="js/status.js"></script>
     <script src="js/fb-init.js"></script>
+    <script src="js/scroll.js"></script>
   </body>
 </html>

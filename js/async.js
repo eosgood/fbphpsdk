@@ -30,6 +30,8 @@ $('#postButton').click(function(){
 	$('.post-data').removeClass('alert');
 	$('.post-data').html('');
 
+	$('#post-id').html('loading...');
+
 	var success = function(response, textStatus, jqXHR) {
 
 		var response_obj = jQuery.parseJSON(response);
@@ -48,6 +50,37 @@ $('#postButton').click(function(){
 
 	$.ajax({
 		url: '/async/post.php',
+		type: 'post',
+		data: {graph: 1},
+		success: success
+	});
+
+});
+
+$('#photoButton').click(function(){
+	$('.photo-data').removeClass('alert');
+	$('.photo-data').html('');
+
+	$('#photo-id').html('loading...');
+
+	var success = function(response, textStatus, jqXHR) {
+
+		var response_obj = jQuery.parseJSON(response);
+		if(response_obj.error) {
+			$('#photo-error').addClass('alert');
+			$('#photo-error').addClass('alert-error');
+			$('#photo-error').html(response_obj.error);	
+		}
+
+		if(response_obj.id) {
+			$('#photo-id').addClass('alert');
+			$('#photo-id').addClass('alert-success');
+			$('#photo-id').html('Post created: ' + response_obj.id);
+		}
+	};
+
+	$.ajax({
+		url: '/async/photo.php',
 		type: 'post',
 		data: {graph: 1},
 		success: success
