@@ -47,6 +47,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     </style>
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta property="fb:admins" content="6420900" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="PHP SDK Sandbox" />
@@ -56,6 +58,7 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     <meta property="og:site_name" content="PHP SDK Sandbox" />
     <meta property="fb:app_id"  content="<?php echo AppInfo::appID() ?>" />
 
+  </head>
   <body onload="prettyPrint()" >
     <div id="fb-root"></div>
     <script>
@@ -262,6 +265,5 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
     <script src="js/prettify.js"></script>
     <script src="js/status.js"></script>
     <script src="js/fb-init.js"></script>
-    <script src="js/scroll.js"></script>
   </body>
 </html>
