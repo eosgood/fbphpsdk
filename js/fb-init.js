@@ -9,7 +9,15 @@ $(document).ready(function(){
       xfbml  : true
     });
 
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        $('.loginText').html('Logout');
+        $('#login-js').removeClass('btn-success').addClass('btn-danger');
+      }
+    });
+
     FB.getLoginStatus(fb_status.update);
+
     $('#fb-status').click(function(){
       FB.getLoginStatus(fb_status.update, true);
     })

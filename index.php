@@ -25,7 +25,10 @@ if ($user) {
 
 $signed_request = $facebook->getSignedRequest();
 
-$login_url = $facebook->getLoginUrl();
+$php_url = $user ? $facebook->getLogoutUrl() : $facebook->getLoginUrl();
+$php_text = $user ? 'Logout' : 'Login';
+$btn_class = $user ? 'btn-danger' : 'btn-success';
+
 $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
 
 ?>
@@ -102,26 +105,24 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
       <hr />
 
       <div class="row" id="login">
-        <div class="span6">
-          <h4>Login using the <a href="https://developers.facebook.com/docs/reference/php/">PHP SDK</a></h4>
-          <p>Uses the PHP SDK to login with <a href="https://developers.facebook.com/docs/reference/php/facebook-getLoginUrl/"><code>$facebook->getLoginUrl()</code></a></p>
-          <p><a class="btn btn-success" href="<?php echo $login_url; ?>">Login with PHP &raquo;</a></p>
+        <div class="span4">
+          <h4><?php echo $php_text?> using the <a href="https://developers.facebook.com/docs/reference/php/">PHP SDK</a></h4>
+          <p><a class="btn <?php echo $btn_class?>" href="<?php echo $php_url; ?>"><?php echo $php_text?> with PHP &raquo;</a></p>
         </div>
-        <div class="span6">
-          <h4>Login using the <a href="https://developers.facebook.com/docs/reference/javascript/">JS SDK</a></h4>
-          <p>Uses the Javascript SDK to login with <a href="https://developers.facebook.com/docs/reference/javascript/FB.login/"><code>FB.login()</code></a></p>
-          <p><a class="btn btn-success" id="login-js">Login with JS &raquo;</a></p>
+        <div class="span4 pull-right">
+          <h4><span class="loginText">Login</span> using the <a href="https://developers.facebook.com/docs/reference/javascript/">JS SDK</a></h4>
+          <p><a class="btn btn-success" id="login-js"><span class="loginText">Login</span>  with JS &raquo;</a></p>
        </div>
       </div>
 
       <hr />
 
       <div class="row" id="authresponse">
-        <div class="span3">
+        <div class="span4">
           <h4>Auth Response</h4>
           <div class="response" id="response-status"></div>
         </div>
-        <div class="span3 pull-right">
+        <div class="span4 pull-right">
           <button id="fb-status" class="btn btn-primary" type="button">Get Login Status</button>
         </div>
       </div>

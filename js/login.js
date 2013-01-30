@@ -1,6 +1,10 @@
 $('#login-js').click(function(){
-	FB.login(function(response) {
-
+	FB.getLoginStatus(function(response){
+		if (response.status === 'connected') {
+			FB.logout();
+		} else {
+			FB.login();
+		}
 	});
 });
 
