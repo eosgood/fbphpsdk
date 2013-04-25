@@ -29,7 +29,8 @@ $php_url = $user ? $facebook->getLogoutUrl() : $facebook->getLoginUrl();
 $php_text = $user ? 'Logout' : 'Login';
 $btn_class = $user ? 'btn-danger' : 'btn-success';
 
-$login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
+$stream_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
+$photo_perms_url = $facebook->getLoginUrl(array('scope' => 'photo_upload'));
 
 ?>
 
@@ -234,8 +235,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
           <h4>POST Request to '/me'/feed'</h4>
           <p>Send a post request to 'https://graph.facebook.com/me/feed' with the php sdk via ajax call. Requires <code>'publish_stream'</code> permissions.</p>
           <p>
-            <a class="btn btn-warning" href="<?php echo $login_perms_url; ?>">Request perms with PHP &raquo;</a>           
-            <a class="btn btn-warning" id="perms-js">Request perms with JS &raquo;</a>
+            <a class="btn btn-warning" href="<?php echo $stream_perms_url; ?>">Request perms with PHP &raquo;</a>           
+            <a class="btn btn-warning" id="stream-js">Request perms with JS &raquo;</a>
           </p>
           <p><button id="postButton" class="btn btn-primary" type="button">POST /me/feed</button></p>
           <div class="post-data" id="post-id"></div>
@@ -245,8 +246,8 @@ $login_perms_url = $facebook->getLoginUrl(array('scope' => 'publish_stream'));
           <h4>POST Photo to '/me'/photos'</h4>
           <p>Send a post request to 'https://graph.facebook.com/me/photos' with the php sdk via ajax call. Requires <code>'photo_upload'</code> permissions.</p>
           <p>
-            <a class="btn btn-warning" href="<?php echo $login_perms_url; ?>">Request perms with PHP &raquo;</a>           
-            <a class="btn btn-warning" id="perms-js">Request perms with JS &raquo;</a>
+            <a class="btn btn-warning" href="<?php echo $photo_perms_url; ?>">Request perms with PHP &raquo;</a>           
+            <a class="btn btn-warning" id="photo-js">Request perms with JS &raquo;</a>
           </p>
           <p><button id="photoButton" class="btn btn-primary" type="button">POST photo to /me</button></p>
           <div class="photo-data" id="photo-id"></div>

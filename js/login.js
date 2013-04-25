@@ -8,8 +8,14 @@ $('#login-js').click(function(){
 	});
 });
 
-$('#perms-js').click(function(){
+$('#stream-js').click(function(){
 	FB.login(function(response) {
 		
 	}, {scope: 'publish_stream'});
+});
+
+$('#photo-js').click(function(){
+	FB.login(function(response) {
+		
+	}, {scope: 'photo_upload'});
 });
